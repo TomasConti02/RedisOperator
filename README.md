@@ -1,6 +1,5 @@
-# redisoperator
-// TODO(user): Add simple overview of use/purpose
-
+This is the Redis Operator code to restart a Redis Cluster in Kubernetes.
+I developed it using the Kubebuilder framework.
 ## Description
 // TODO(user): An in-depth paragraph about your project and overview of use
 

@@ -1,8 +1,8 @@
 This is the Redis Operator code to restart a Redis Cluster in Kubernetes. 
 I developed it using the Kubebuilder framework, with Longhorn as the storage provider.
 ## Description
-We want to create a system for restarting a Redis Cluster using VolumeSnapshots. 
-It is designed to be fast and maintain persistent state.
+## Introduction
+RedisOperator is a Kubernetes operator developed using the Kubebuilder framework to manage Redis clusters. It use Longhorn as a storage provider, allowing fast recovery and backup of Redis clusters using VolumeSnapshots. This solution ensures data persistence and quick cluster restarts, making it ideal for applications that require high availability and low downtime.
 ## Getting Started
 it is down the RESDME.md file
 ### Prerequisites
@@ -110,8 +110,9 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
-CRD.yaml [RedisOperator is a CRD]
+## Manifests
+## CRD.yaml [RedisOperator is a CRD]
+```yaml
 apiVersion: cache.example.com/v1
 kind: Redis
 metadata:
@@ -119,9 +120,10 @@ metadata:
   namespace: default
 spec:
   size: 1
-
+````
 ---------------------------------------------------------------------
-StorageClass.yaml [longhorn provider]
+## StorageClass.yaml [longhorn provider]
+```yaml
 apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
@@ -135,9 +137,10 @@ parameters:
   dataLocality: disabled
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
-
+````
 ---------------------------------------------------------------------
-VolumeSnapshotClass.yaml [longhorn provider]
+## VolumeSnapshotClass.yaml [longhorn provider]
+```yaml
 kind: VolumeSnapshotClass
 apiVersion: snapshot.storage.k8s.io/v1
 metadata:
@@ -146,8 +149,10 @@ driver: driver.longhorn.io
 deletionPolicy: Delete
 parameters:
   type: snap
-  
+````
 --------------------------------------------------------------------
+## Create the Redis Operator Project Setting 
+```
 kubebuilder init --domain example.com --repo github.com/username/redis-operator
 kubebuilder create api --group cache --version v1 --kind Redis
 mkdir -p ~/RedisOperator
@@ -155,12 +160,13 @@ cd ~/RedisOperator
 go mod init example.com/RedisOperator
 kubebuilder init --domain=example.com --repo=example.com/RedisOperator
 kubebuilder create api --group cache --version v1 --kind Redis
-
+```
 --------------------------------------------------------------------
-testing on ~/RedisOperator
+## testing on ~/RedisOperator
+```
 make manifests
 make install
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 make run
-
+```
 ---------------------------------------------------------------------------

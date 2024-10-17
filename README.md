@@ -1,4 +1,5 @@
-This is the Redis Operator code to restart a Redis Cluster in Kubernetes. 
+Hi, im **Tomas Conti**, and this is my **Computer Engineer thesis project**.
+It is the Redis Operator code to **backup and restart a Redis Cluster in Kubernetes**. 
 I developed it using the Kubebuilder framework, with Longhorn as the storage provider.
 ## Description
 RedisOperator is a Kubernetes operator developed using the Kubebuilder framework to manage Redis clusters. It use Longhorn as a storage provider, allowing fast recovery and backup of Redis clusters using VolumeSnapshots. This solution ensures data persistence and quick cluster restarts, making it ideal for applications that require high availability and low downtime.

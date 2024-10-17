@@ -1,7 +1,7 @@
 Hi, i'm **Tomas Conti**, and this is my **Computer Engineer thesis project**.
 It is the [Redis Operator](https://redis.io/docs/latest/operate/kubernetes/architecture/operator/) code to **backup and restart a Redis Cluster in Kubernetes**. 
 I developed it using the Kubebuilder framework, with Longhorn as the storage provider.
-I manage [Redis](https://redis.io/) las a key-value and in-memory container database.
+I manage [Redis](https://redis.io/) as a key-value and in-memory container database.
 ## Description
 Redis Operator is a Kubernetes operator developed using the Kubebuilder framework to manage Redis clusters. It use Longhorn as a storage provider, allowing fast recovery and backup of Redis clusters using VolumeSnapshots. This solution ensures data persistence and quick cluster restarts, making it ideal for applications that require high availability and low downtime.
 ## Introduction

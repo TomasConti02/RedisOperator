@@ -110,7 +110,7 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-## Getting Started
+
 CRD.yaml [RedisOperator is a CRD]
 apiVersion: cache.example.com/v1
 kind: Redis
@@ -119,6 +119,7 @@ metadata:
   namespace: default
 spec:
   size: 1
+
 ---------------------------------------------------------------------
 StorageClass.yaml [longhorn provider]
 apiVersion: storage.k8s.io/v1
@@ -134,6 +135,7 @@ parameters:
   dataLocality: disabled
 reclaimPolicy: Delete
 volumeBindingMode: Immediate
+
 ---------------------------------------------------------------------
 VolumeSnapshotClass.yaml [longhorn provider]
 kind: VolumeSnapshotClass
@@ -144,6 +146,7 @@ driver: driver.longhorn.io
 deletionPolicy: Delete
 parameters:
   type: snap
+  
 --------------------------------------------------------------------
 kubebuilder init --domain example.com --repo github.com/username/redis-operator
 kubebuilder create api --group cache --version v1 --kind Redis
@@ -152,10 +155,12 @@ cd ~/RedisOperator
 go mod init example.com/RedisOperator
 kubebuilder init --domain=example.com --repo=example.com/RedisOperator
 kubebuilder create api --group cache --version v1 --kind Redis
+
 --------------------------------------------------------------------
 testing on ~/RedisOperator
 make manifests
 make install
 export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
 make run
+
 ---------------------------------------------------------------------------

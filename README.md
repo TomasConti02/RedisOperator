@@ -1,4 +1,4 @@
-Hi, im **Tomas Conti**, and this is my **Computer Engineer thesis project**.
+Hi, i'm **Tomas Conti**, and this is my **Computer Engineer thesis project**.
 It is the Redis Operator code to **backup and restart a Redis Cluster in Kubernetes**. 
 I developed it using the Kubebuilder framework, with Longhorn as the storage provider.
 ## Description

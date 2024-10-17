@@ -3,56 +3,8 @@ I developed it using the Kubebuilder framework, with Longhorn as the storage pro
 ## Description
 We want to create a system for restarting a Redis Cluster using VolumeSnapshots. 
 It is designed to be fast and maintain persistent state.
-
 ## Getting Started
-CRD.yaml [RedisOperator is a CRD]
-apiVersion: cache.example.com/v1
-kind: Redis
-metadata:
-  name: redis-cluster
-  namespace: default
-spec:
-  size: 1
----------------------------------------------------------------------
-StorageClass.yaml [longhorn provider]
-apiVersion: storage.k8s.io/v1
-kind: StorageClass
-metadata:
-  name: longhorn-new
-provisioner: driver.longhorn.io
-parameters:
-  numberOfReplicas: "1"
-  staleReplicaTimeout: "30"
-  fromBackup: ""
-  fsType: ext4
-  dataLocality: disabled
-reclaimPolicy: Delete
-volumeBindingMode: Immediate
----------------------------------------------------------------------
-VolumeSnapshotClass.yaml [longhorn provider]
-kind: VolumeSnapshotClass
-apiVersion: snapshot.storage.k8s.io/v1
-metadata:
-  name: new-volumesnapshotclass-longhorn
-driver: driver.longhorn.io
-deletionPolicy: Delete
-parameters:
-  type: snap
---------------------------------------------------------------------
-kubebuilder init --domain example.com --repo github.com/username/redis-operator
-kubebuilder create api --group cache --version v1 --kind Redis
-mkdir -p ~/RedisOperator
-cd ~/RedisOperator
-go mod init example.com/RedisOperator
-kubebuilder init --domain=example.com --repo=example.com/RedisOperator
-kubebuilder create api --group cache --version v1 --kind Redis
---------------------------------------------------------------------
-testing on ~/RedisOperator
-make manifests
-make install
-export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
-make run
----------------------------------------------------------------------------
+it is down the RESDME.md file
 ### Prerequisites
 - go version v1.21.0+
 - docker version 17.03+.
@@ -158,4 +110,52 @@ distributed under the License is distributed on an "AS IS" BASIS,
 WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 See the License for the specific language governing permissions and
 limitations under the License.
-
+## Getting Started
+CRD.yaml [RedisOperator is a CRD]
+apiVersion: cache.example.com/v1
+kind: Redis
+metadata:
+  name: redis-cluster
+  namespace: default
+spec:
+  size: 1
+---------------------------------------------------------------------
+StorageClass.yaml [longhorn provider]
+apiVersion: storage.k8s.io/v1
+kind: StorageClass
+metadata:
+  name: longhorn-new
+provisioner: driver.longhorn.io
+parameters:
+  numberOfReplicas: "1"
+  staleReplicaTimeout: "30"
+  fromBackup: ""
+  fsType: ext4
+  dataLocality: disabled
+reclaimPolicy: Delete
+volumeBindingMode: Immediate
+---------------------------------------------------------------------
+VolumeSnapshotClass.yaml [longhorn provider]
+kind: VolumeSnapshotClass
+apiVersion: snapshot.storage.k8s.io/v1
+metadata:
+  name: new-volumesnapshotclass-longhorn
+driver: driver.longhorn.io
+deletionPolicy: Delete
+parameters:
+  type: snap
+--------------------------------------------------------------------
+kubebuilder init --domain example.com --repo github.com/username/redis-operator
+kubebuilder create api --group cache --version v1 --kind Redis
+mkdir -p ~/RedisOperator
+cd ~/RedisOperator
+go mod init example.com/RedisOperator
+kubebuilder init --domain=example.com --repo=example.com/RedisOperator
+kubebuilder create api --group cache --version v1 --kind Redis
+--------------------------------------------------------------------
+testing on ~/RedisOperator
+make manifests
+make install
+export KUBECONFIG=/etc/rancher/k3s/k3s.yaml
+make run
+---------------------------------------------------------------------------

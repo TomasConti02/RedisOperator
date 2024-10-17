@@ -1,13 +1,13 @@
 This is the Redis Operator code to restart a Redis Cluster in Kubernetes. 
 I developed it using the Kubebuilder framework, with Longhorn as the storage provider.
 ## Description
-## Introduction
 RedisOperator is a Kubernetes operator developed using the Kubebuilder framework to manage Redis clusters. It use Longhorn as a storage provider, allowing fast recovery and backup of Redis clusters using VolumeSnapshots. This solution ensures data persistence and quick cluster restarts, making it ideal for applications that require high availability and low downtime.
-## Getting Started
+## Introduction
 I create the execution environment with **two Ubuntu 22.04 VM**. I use [K3s](https://docs.k3s.io/quick-start) for deploy a light Kubernetes version. 
 
 In addition, I deployed a [Longhorn](https://docs.vultr.com/how-to-install-longhorn-on-kubernetes) **storage provider** inside the Kubernetes environment to **allow VolumeSnapshot creation**.
-
+## Getting Started
+The custom controller code is inside the file **internal/controller/redis_controller.go**, where I create the entire execution logic of the operator. Inside the file **api/redis_type.go**, I define the Redis Operator CRD struct.
 ## Manifests
 ## CRD.yaml [RedisOperator is a CRD]
 ```yaml

@@ -1,4 +1,5 @@
 Hi, i'm **Tomas Conti**, and this is my **Computer Engineer thesis project**.
+I would like to manage the issue to backup and a fast recovery  of a cluster Kubernetes.
 It is the [Redis Operator](https://redis.io/docs/latest/operate/kubernetes/architecture/operator/) code to **backup and restart a Redis Cluster in Kubernetes**. 
 I developed it using the Kubebuilder framework, with Longhorn as the storage provider.
 I manage [Redis](https://redis.io/) as a key-value and in-memory container database.
